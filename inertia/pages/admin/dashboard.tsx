@@ -1,12 +1,8 @@
-import { useEffect, useState } from 'react'
-import Sidebar from '../../ui/components/Sidebar'
-import HamburgerMenu from '../../ui/components/HamburgerMenu'
+import { useState } from 'react'
+import HamburgerMenu from '~/ui/components/HamburgerMenu'
+import Sidebar from '~/ui/components/Sidebar'
 
 export default function Dashboard() {
-  useEffect(() => {
-    document.documentElement.classList.remove('dark')
-  }, [])
-
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (

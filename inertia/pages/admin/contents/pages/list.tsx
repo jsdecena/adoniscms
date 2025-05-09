@@ -1,13 +1,9 @@
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react/components/Table'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import HamburgerMenu from '~/ui/components/HamburgerMenu'
 import Sidebar from '~/ui/components/Sidebar'
 
 export default function Page() {
-  useEffect(() => {
-    document.documentElement.classList.remove('dark')
-  }, [])
-
   const [, setSidebarOpen] = useState(false)
 
   return (

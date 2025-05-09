@@ -1,12 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import HamburgerMenu from '~/ui/components/HamburgerMenu'
 import Sidebar from '~/ui/components/Sidebar'
 
 export default function Post() {
-  useEffect(() => {
-    document.documentElement.classList.remove('dark')
-  }, [])
-
   const [, setSidebarOpen] = useState(false)
 
   return (
