@@ -22,20 +22,18 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
       {children}
       {toast && (
         <div className="fixed top-4 right-4 z-50">
-          <Toast className="mb-2">
+          <Toast
+            className={
+              toast.type === 'success'
+                ? 'mb-2 bg-green-600 text-white font-medium'
+                : 'mb-2 bg-red-600 text-white font-medium'
+            }
+          >
             <div className="flex items-center justify-between w-full">
-              <div
-                className={
-                  toast.type === 'success'
-                    ? 'text-green-600 font-medium'
-                    : 'text-red-600 font-medium'
-                }
-              >
-                {toast.message}
-              </div>
+              <div>{toast.message}</div>
               <button
                 type="button"
-                className="ml-4 text-gray-400 hover:text-gray-700"
+                className="ml-4 text-gray-50 hover:text-gray-100"
                 onClick={() => setToast(null)}
               >
                 ×
