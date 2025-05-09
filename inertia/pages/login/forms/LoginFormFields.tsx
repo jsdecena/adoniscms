@@ -8,8 +8,6 @@ function LoginFormFields() {
     register,
     formState: { errors },
   } = useFormHelper(PayloadSchema);
-
-  console.log(errors, 'ERRORS')
   return (
     <>
     <FormInput
