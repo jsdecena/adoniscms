@@ -3,6 +3,7 @@ import { useLogin } from '../_hooks';
 import { useToast } from '~/ui/components/ToastProvider';
 import { PayloadSchema } from '../_types';
 import LoginFormFields from './LoginFormFields';
+import { router } from '@inertiajs/react';
 
 export function LoginForm() {
   const { mutate } = useLogin();
@@ -17,6 +18,7 @@ export function LoginForm() {
     mutate(v, {
       onSuccess: () => {
         // No error handling needed on success
+        router.visit('admin')
       },
       onError: (error) => {
         const message = error?.message || 'An error occurred';
