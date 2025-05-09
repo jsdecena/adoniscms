@@ -10,7 +10,6 @@ import { router } from '@inertiajs/react';
 
 export default function Page() {
   const fetchPages = useFetchPages();
-  const [, setSidebarOpen] = useState(false)
   const [pages, setPages] = useState<Content[]>([])
 
   useEffect(() => {
@@ -34,11 +33,9 @@ export default function Page() {
       {/* Sidebar for desktop */}
       <Sidebar />
 
-      {/* Hamburger menu for mobile */}
-      <HamburgerMenu onClick={() => setSidebarOpen(true)} />
-
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-start justify-start p-8">
+        <HamburgerMenu />
         <div className="w-full h-full bg-white rounded-lg shadow-lg p-8">
           <h1 className="text-3xl font-semibold mb-4 text-gray-800">Pages</h1>
           <p className="text-gray-600"></p>
