@@ -20,6 +20,7 @@ import PageEditsController from '#controllers/contents/page_edits_controller'
 import PageUpdateApiController from '#controllers/contents/api/page_update_api_controller'
 import PageCreatesController from '#controllers/contents/page_creates_controller'
 import PageStoresApiController from '#controllers/contents/api/page_stores_api_controller'
+import PageDeletesApiController from '#controllers/contents/api/page_deletes_api_controller'
 
 router.on('/').renderInertia('home')
 
@@ -38,6 +39,8 @@ router.group(() => {
 
   router.get('pages/:id/edit', [PageEditsController]).as('pages.edit')
   router.put('pages/:id/edit', [PageUpdateApiController]).as('pages.update')
+
+  router.delete('pages/:id/delete', [PageDeletesApiController]).as('pages.delete')
 
   router.get('posts', [PostListsController]).as('posts.list')
 })

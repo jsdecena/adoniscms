@@ -19,21 +19,6 @@ const fetchPages = async() => {
   return res;
 };
 
-// const updatePage = async (id: string, payload: TPayload) => {
-//   const res: Content = await req.put({
-//     url: `/admin/api/pages/${id}`,
-//     payload: {
-//       title: payload.title,
-//       body: payload.body === null || payload.body === undefined ? '' : String(payload.body),
-//       excerpt: payload.excerpt === null || payload.excerpt === undefined ? '' : String(payload.excerpt),
-//       status: payload.status,
-//       visibility: payload.visibility,
-//       type: payload.type,
-//     },
-//   });
-//   return res;
-// };
-
 export function useFetchPages() {
   return useMutation({
     mutationKey: ['FETCH_PAGES'],
@@ -53,6 +38,12 @@ const updatePage = async (id: string, payload: TPayload) => {
     url: `/admin/pages/${id}/edit`,
     payload,
   });
+  return res;
+};
+
+const deletePage = async (id: string) => {
+  const res = await req.removeJson({
+    url: `/admin/pages/${id}/delete`});
   return res;
 };
 
@@ -87,6 +78,23 @@ export function useCreatePage() {
     mutationFn: async ({ payload }: { payload: TPayload }) => {
       try {
         const response = await createPage(payload);
+        return response;
+      } catch (error: any) {
+        throw new Error(error.message || 'An unexpected error occurred');
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['FETCH_PAGES'] });
+    },    
+  });
+}
+
+export function useDeletePage() {
+  return useMutation({
+    mutationKey: ['DELETE_PAGE'],
+    mutationFn: async ({ id }: { id: string; }) => {
+      try {
+        const response = await deletePage(id);
         return response;
       } catch (error: any) {
         throw new Error(error.message || 'An unexpected error occurred');

@@ -28,6 +28,10 @@ export default function Page() {
     router.visit(`/admin/pages/${id}/edit`)
   }
 
+  const onDelete = (id: string) => {
+    //
+  }  
+
   const onCreate = () => {
     router.visit('/admin/pages/create');
   }
@@ -65,8 +69,9 @@ export default function Page() {
                     <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{item.title}</TableCell>
                     <TableCell className='w-1/2'>{item.body}</TableCell>
                     <TableCell><StatusBadge status={item.status} /></TableCell>
-                    <TableCell>
+                    <TableCell className='flex flex-row justify-start gap-2'>
                       <Button className='w-25' type='button' color='yellow' onClick={() => onEdit(item.id)}>Edit</Button>
+                      <Button className='w-25' type='button' color='red' onClick={() => onDelete(item.id)}>Delete</Button>
                     </TableCell>
                   </TableRow>
                 ))}

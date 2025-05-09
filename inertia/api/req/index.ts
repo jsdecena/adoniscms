@@ -99,6 +99,24 @@ export const putJson = async <T>({ url, payload }: TJsonPayload): Promise<T> => 
   return x?.data !== undefined ? x.data : (x as T);
 };
 
+export const removeJson = async <T>({ url }: { url: string }): Promise<T> => {
+  const res = await fetch(`${url}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+    },
+  });
+  const x = await res.json();
+  if (!res?.ok) {
+    throw {
+      status: res?.status,
+      ...x,
+    };
+  }
+  return x?.data;
+};
+
 export const put = async <T>({ url, payload }: TPayload): Promise<T> => {
   const res = await fetch(`${url}`, {
     method: 'PUT',
