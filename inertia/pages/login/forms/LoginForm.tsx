@@ -37,7 +37,7 @@ export function LoginForm() {
       <LoginFormFields />
       <button 
         type="submit"
-        className="btn btn-social w-full flex items-center justify-center gap-2 py-3 px-4 border rounded-md bg-fuchsia-600 text-white hover:bg-fuchsia-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn btn-social w-full flex items-center justify-center gap-2 py-3 px-4 border rounded-md bg-indigo-600 text-white hover:bg-indigo-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Submit
       </button>
