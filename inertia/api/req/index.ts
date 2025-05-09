@@ -73,6 +73,32 @@ export const getJson = async <T>({ url }: { url: string }): Promise<T> => {
   return x?.data !== undefined ? x.data : (x as T);
 };
 
+export const putJson = async <T>({ url, payload }: TJsonPayload): Promise<T> => {
+  const res = await fetch(`${url}`, {
+    method: 'PUT',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+    },
+  });
+  
+  // Get response as text first to check if it's empty
+  const text = await res.text();
+  
+  // Parse as JSON only if not empty
+  const x = text ? JSON.parse(text) : {};
+  
+  if (!res?.ok) {
+    throw {
+      status: res?.status,
+      ...x,
+    };
+  }
+  // Ensure a value is always returned
+  return x?.data !== undefined ? x.data : (x as T);
+};
+
 export const put = async <T>({ url, payload }: TPayload): Promise<T> => {
   const res = await fetch(`${url}`, {
     method: 'PUT',

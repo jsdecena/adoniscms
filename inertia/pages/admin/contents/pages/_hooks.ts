@@ -1,7 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
-import { getQueryClient, req } from '~/api';
+import { req } from '~/api';
 
 import { Content, TPayload } from './_types';
+import { queryClient } from '~/api/store/_config';
 
 export interface ApiResponse {
   id?: string;
@@ -18,37 +19,18 @@ const fetchPages = async() => {
   return res;
 };
 
-// const createCategory = async (payload: TPayload) => {
-//   const res: CategoryResponse = await req.post({
-//     url: '/partners/categories/create',
+// const updatePage = async (id: string, payload: TPayload) => {
+//   const res: Content = await req.put({
+//     url: `/admin/api/pages/${id}`,
 //     payload: {
-//       name: payload.name,
-//       description: payload.description || '',
-//       color: payload.color || '',
-//     }
+//       title: payload.title,
+//       body: payload.body === null || payload.body === undefined ? '' : String(payload.body),
+//       excerpt: payload.excerpt === null || payload.excerpt === undefined ? '' : String(payload.excerpt),
+//       status: payload.status,
+//       visibility: payload.visibility,
+//       type: payload.type,
+//     },
 //   });
-
-//   return res;
-// };
-
-// const updateCategory = async (id: string, payload: TPayload) => {
-//   const res: CategoryResponse = await req.put({
-//     url: `/partners/categories/edit/${id}`,
-//     payload: {
-//       name: payload.name,
-//       description: payload.description || '',
-//       color: payload.color || '',
-//     }
-//   });
-
-//   return res;
-// };
-
-// const deleteCategories = async (id: string) => {
-//   const res: CategoryResponse = await req.remove({
-//     url: `/partners/categories/delete/${id}`
-//   });
-
 //   return res;
 // };
 
@@ -66,51 +48,27 @@ export function useFetchPages() {
   });
 }
 
-// export function useCreateCategory() {
-//   return useMutation({
-//     mutationKey: ['CREATE_CATEGORIES'],
-//     mutationFn: async (payload: TPayload) => {
-//       try {
-//         const response = await createCategory(payload);
-//         return response;
-//       } catch (error: any) {
-//         console.error('CREATE_CATEGORIES_ERROR', error);
-//         throw new Error('An unexpected error occurred');
-//       }
-//     },
-//   });
-// }
+const updatePage = async (id: string, payload: TPayload) => {
+  const res = await req.putJson({
+    url: `/admin/pages/${id}`,
+    payload,
+  });
+  return res;
+};
 
-// export function useUpdateCategory() {
-//   return useMutation({
-//     mutationKey: ['UPDATE_CATEGORIES'],
-//     mutationFn: async ({ id, payload }: { id: string; payload: TPayload }) => {
-//       try {
-//         const response = await updateCategory(id, payload);
-//         return response;
-//       } catch (error: any) {
-//         console.error('UPDATE_CATEGORIES_ERROR', { error });
-//         throw new Error(error.message || 'An unexpected error occurred');
-//       }
-//     },
-//   });
-// }
-
-// export function useDeleteCategory() {
-//   const queryClient = getQueryClient();
-//   return useMutation({
-//     mutationKey: ['DELETE_CATEGORIES'],
-//     mutationFn: async ({ id }: { id: string }) => {
-//       try {
-//         const response = await deleteCategories(id);
-//         return response;
-//       } catch (error: any) {
-//         console.error('DELETE_CATEGORIES_ERROR', { error });
-//         throw new Error(error.message || 'An unexpected error occurred');
-//       }
-//     },
-//     onSuccess: () => {
-//       queryClient.invalidateQueries({ queryKey: ['CATEGORIESs'] });
-//     },
-//   });
-// }
+export function useUpdatePage() {
+  return useMutation({
+    mutationKey: ['EDIT_PAGE'],
+    mutationFn: async ({ id, payload }: { id: string; payload: TPayload }) => {
+      try {
+        const response = await updatePage(id, payload);
+        return response;
+      } catch (error: any) {
+        throw new Error(error.message || 'An unexpected error occurred');
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['FETCH_PAGES'] });
+    },    
+  });
+}
