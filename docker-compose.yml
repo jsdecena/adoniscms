@@ -1,0 +1,22 @@
+services:
+  database:
+    container_name: database
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256"
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+      - ./tmp:/home/node/app/tmp
+    ports:
+      - '${DB_PORT}:5432'
+    networks:
+      - app-local
+networks:
+  app-local:
+    driver: bridge
+volumes:
+  postgres_volume:
