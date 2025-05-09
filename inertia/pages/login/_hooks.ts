@@ -24,7 +24,7 @@ export function useLogin() {
     mutationFn: async (payload: TPayload) => {
       try {
         const response = await action(payload);
-
+        console.log(response, 'ASDAS')
         return response;
       } catch (error: any) {
         throw new Error(error.message || 'An unexpected error occurred');

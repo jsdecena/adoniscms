@@ -21,8 +21,8 @@ export function LoginForm() {
   };
 
   const INIT_FORM = {
-    email: '',
-    password: ''
+    email: 'admin@email.com',
+    password: 'Sup3rSecr3t@123!'
   };
 
   return (

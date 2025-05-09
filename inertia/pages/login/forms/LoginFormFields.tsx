@@ -9,6 +9,7 @@ function LoginFormFields() {
     formState: { errors },
   } = useFormHelper(PayloadSchema);
 
+  console.log(errors, 'ERRORS')
   return (
     <>
     <FormInput
