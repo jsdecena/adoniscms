@@ -35,7 +35,10 @@ const InputComponent = <T,>({
 
   const handleOnChange = (e: SingleValue<FormSelectOption>): void => {
     const v = e?.value ?? '';
-    onChange(v);
+    onChange((prev: any) => ({
+      ...prev,
+      [name as keyof typeof prev]: v,
+    }));
   };
 
   const newValue = options.find((item) => item.value === value) ?? undefined;

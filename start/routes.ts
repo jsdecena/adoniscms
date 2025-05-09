@@ -17,6 +17,7 @@ import PostListsController from '#controllers/contents/post_lists_controller'
 import PageListsController from '#controllers/contents/page_lists_controller'
 import PageListApiController from '#controllers/contents/api/page_lists_api_controller'
 import PageEditsController from '#controllers/contents/page_edits_controller'
+import PageUpdateApiController from '#controllers/contents/api/page_update_api_controller'
 
 router.on('/').renderInertia('home')
 
@@ -31,7 +32,7 @@ router.group(() => {
   router.get('api/pages', [PageListApiController]).as('pages.get')
 
   router.get('pages/:id', [PageEditsController]).as('pages.edit')
-  router.put('pages/:id', [PageListApiController]).as('pages.update')
+  router.put('pages/:id', [PageUpdateApiController]).as('pages.update')
 
   router.get('posts', [PostListsController]).as('posts.list')
 })

@@ -34,6 +34,12 @@ export function EditPageForm({ initialValues, id }: { initialValues: TPayload, i
       >
         Save Changes
       </button>
+      <a 
+        href='/admin/pages'
+        className="btn btn-social w-full flex items-center justify-center gap-2 py-3 px-4 border rounded-md bg-gray-600 text-white hover:bg-gray-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Go Back
+      </a>      
     </Form>
   );
 }
