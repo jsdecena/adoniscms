@@ -1,0 +1,17 @@
+.swiper {
+  @apply px-6;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  @apply aspect-square h-12 w-12 overflow-hidden rounded-full border border-solid border-gray-light bg-white duration-300;
+  &::after {
+    @apply text-md font-bold text-primary;
+  }
+  &:hover {
+    @apply bg-primary-muted;
+  }
+}
+
+.swiper-button-prev {
+  @apply -ml-2;
+}

@@ -1,0 +1,79 @@
+.form-input {
+  @apply min-h-[2.5rem] w-full rounded-sm border-0 bg-gray-lighter px-3 py-2 text-sm shadow-sm ring-inset ring-gray-dark placeholder:text-gray-base focus:ring-2 focus:ring-inset focus:ring-info disabled:bg-gray-light disabled:text-gray-base disabled:ring-gray;
+}
+
+.form-input-date {
+  @apply min-h-[2.5rem] w-full rounded-sm border-0 bg-gray-lighter px-3 py-2 text-sm shadow-sm ring-inset ring-gray-dark placeholder:text-gray-base focus:ring-2 focus:ring-inset focus:ring-info disabled:bg-gray-light disabled:text-gray-base disabled:ring-gray;
+}
+
+.form-input-select {
+  @apply font-inter text-sm;
+  /* main body */
+  .react-select__control {
+    @apply max-h-[6.25rem] min-h-[2.5rem] w-full cursor-pointer overflow-auto rounded-sm border-0 bg-gray-lighter px-3 pb-2 pt-2;
+    &--is-focused {
+      @apply shadow-input-focus ring-2 ring-inset ring-info;
+    }
+  }
+
+  .react-select__placeholder {
+    @apply m-0 text-gray-base;
+  }
+  .react-select__input-container {
+    @apply m-0 p-0;
+  }
+  .react-select__value-container {
+    @apply p-0;
+  }
+  .react-select__control--is-disabled {
+    @apply bg-gray-light text-gray;
+  }
+  .react-select__indicator-separator {
+    @apply opacity-0;
+  }
+  .react-select__indicator {
+    @apply p-0;
+  }
+  .react-select__dropdown-indicator {
+    @apply text-gray;
+  }
+  .react-select__option--is-focused,
+  .react-select__option--is-selected {
+    @apply bg-primary-muted text-primary;
+  }
+}
+
+.react-datepicker-wrapper {
+  @apply w-full;
+}
+.react-datepicker {
+  @apply rounded-md border border-solid border-gray-lighter font-inter text-xs shadow-lg;
+  .custom-button {
+    @apply flex size-6 rounded-sm border border-solid border-gray-light bg-transparent p-0 text-[1rem] text-gray-dark shadow-sm disabled:bg-gray-lighter disabled:text-gray disabled:hover:cursor-not-allowed;
+  }
+
+  .react-datepicker__header {
+    @apply border-b-0 bg-transparent p-0 pb-2;
+  }
+  .react-datepicker__day {
+    @apply text-gray-darker hover:bg-primary-muted;
+  }
+  .react-datepicker__day-name {
+    @apply text-xs text-gray;
+  }
+
+  .react-datepicker__day--today {
+    @apply font-bold text-primary;
+  }
+  .react-datepicker__day--selected,
+  .react-datepicker__day--selected:hover {
+    @apply rounded-sm bg-primary font-bold text-white hover:bg-primary;
+  }
+  .react-datepicker__day--outside-month,
+  .react-datepicker__day--disabled {
+    @apply cursor-not-allowed text-gray hover:bg-transparent;
+  }
+}
+.react-datepicker__triangle {
+  @apply hidden;
+}

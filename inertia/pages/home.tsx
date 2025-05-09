@@ -1,6 +1,11 @@
 import { DarkThemeToggle } from 'flowbite-react'
+import { useEffect } from 'react'
 
 export default function Home() {
+  useEffect(() => {
+    document.documentElement.classList.remove('dark')
+  }, [])
+
   const CARDS = [
     {
       title: 'Flowbite React Docs',

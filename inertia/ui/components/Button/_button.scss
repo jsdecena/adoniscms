@@ -1,0 +1,195 @@
+.btn-body {
+  @apply flex items-center;
+  &.is-loading {
+    @apply opacity-0;
+  }
+}
+.btn-left {
+  @apply mr-1;
+}
+.btn-right {
+  @apply ml-1;
+}
+.btn-loading-body {
+  @apply absolute flex items-center justify-center;
+}
+
+/* ======== SIZES ======== */
+.btn,
+.btn-icon {
+  @apply inline-flex items-center justify-center whitespace-nowrap align-middle font-medium duration-300 ease-in-out hover:cursor-pointer disabled:cursor-not-allowed;
+  &-sm {
+    @apply h-7 rounded-sm border-2 border-solid px-2 text-xs;
+  }
+  &-md {
+    @apply h-8 rounded-sm border-2 border-solid px-3 text-sm;
+  }
+  &-lg {
+    @apply h-9 rounded-sm border-2 border-solid px-4 text-sm;
+  }
+  &-xl {
+    @apply h-12 rounded-sm border-2 border-solid px-6 text-md;
+  }
+
+  &-icon-sm {
+    @apply h-6 w-6 rounded-sm border-2 border-solid text-xs;
+  }
+  &-icon-md {
+    @apply h-8 w-8 rounded-sm border-2 border-solid text-sm;
+  }
+  &-icon-lg {
+    @apply h-10 w-10 rounded-sm border-2 border-solid text-md;
+  }
+  &-icon-lg {
+    @apply h-12 w-12 rounded-sm border-2 border-solid text-lg;
+  }
+}
+
+/* ======== THEMES ======== */
+.btn-solid {
+  &-disabled {
+    @apply cursor-not-allowed border-gray-light bg-gray-light text-gray outline-none focus:outline-none;
+  }
+  &-white {
+    @apply border-white bg-white text-primary hover:border-white hover:bg-primary hover:text-white active:border-primary-dark active:bg-primary-dark;
+  }
+  &-primary {
+    @apply border-primary bg-primary text-white hover:border-primary-dark hover:bg-primary-dark active:border-primary-dark active:bg-primary-dark;
+  }
+  &-secondary {
+    @apply border-secondary bg-secondary text-white hover:border-secondary-light hover:bg-secondary-light active:border-secondary-dark active:bg-secondary-dark;
+  }
+  &-info {
+    @apply border-info bg-info text-white hover:border-info-dark hover:bg-info-dark active:border-info-dark active:bg-info-dark;
+  }
+  &-success {
+    @apply border-success bg-success text-white hover:border-success-dark hover:bg-success-dark active:border-success-dark active:bg-success-dark;
+  }
+
+  &-warning {
+    @apply border-warning bg-warning text-white hover:border-warning-dark hover:bg-warning-dark active:border-warning-dark active:bg-warning-dark;
+  }
+  &-danger {
+    @apply border-danger bg-danger text-white hover:border-danger-dark hover:bg-danger-dark active:border-danger-dark active:bg-danger-dark;
+  }
+  &-gray {
+    @apply border-gray-light bg-gray-light text-gray-dark hover:border-gray hover:bg-gray hover:text-white hover:shadow-button-shadow active:border-gray active:bg-gray active:shadow-button-inner;
+  }
+}
+
+.btn-outline {
+  &-disabled {
+    @apply cursor-not-allowed border-gray-light bg-white text-gray-light outline-none focus:outline-none;
+  }
+  &-white {
+    @apply border-white bg-transparent text-white hover:bg-white hover:text-primary hover:shadow-button-shadow active:border-primary active:shadow-button-inner;
+  }
+  &-primary {
+    @apply border-primary bg-white text-primary hover:border-primary-dark hover:bg-primary-muted hover:text-primary-dark hover:shadow-button-shadow active:border-primary-dark active:bg-primary-muted active:shadow-button-inner;
+  }
+  &-secondary {
+    @apply border-secondary bg-white text-secondary hover:border-secondary-dark hover:bg-secondary-muted hover:text-secondary-dark hover:shadow-button-shadow active:border-secondary-dark active:bg-secondary-muted active:shadow-button-inner;
+  }
+  &-info {
+    @apply border-info bg-white text-info hover:border-info-dark hover:bg-info-muted hover:text-info-dark hover:shadow-button-shadow active:border-info-dark active:bg-info-muted active:shadow-button-inner;
+  }
+  &-success {
+    @apply border-success bg-white text-success hover:border-success-dark hover:bg-success-muted hover:text-success-dark hover:shadow-button-shadow active:border-success-dark active:bg-success-muted active:shadow-button-inner;
+  }
+  &-warning {
+    @apply border-warning bg-white text-warning hover:border-warning-dark hover:bg-warning-muted hover:text-warning-dark hover:shadow-button-shadow active:border-warning-dark active:bg-warning-muted active:shadow-button-inner;
+  }
+  &-danger {
+    @apply border-danger bg-white text-danger hover:border-danger-dark hover:bg-danger-muted hover:text-danger-dark hover:shadow-button-shadow active:border-danger-dark active:bg-danger-muted active:shadow-button-inner;
+  }
+  &-gray {
+    @apply border-gray-dark bg-white text-gray-dark hover:bg-gray-lighter hover:shadow-button-shadow active:bg-gray-light active:shadow-button-inner;
+  }
+}
+
+.btn-text {
+  &-disabled {
+    @apply cursor-not-allowed rounded-sm border-none bg-transparent text-gray-light outline-none focus:outline-none;
+  }
+  &-primary {
+    @apply rounded-sm border-none bg-transparent text-primary hover:underline;
+  }
+  &-secondary {
+    @apply rounded-sm border-none bg-transparent text-secondary hover:underline;
+  }
+  &-info {
+    @apply rounded-sm border-none bg-transparent text-info hover:underline;
+  }
+  &-success {
+    @apply rounded-sm border-none bg-transparent text-success hover:underline;
+  }
+  &-warning {
+    @apply rounded-sm border-none bg-transparent text-warning hover:underline;
+  }
+  &-danger {
+    @apply rounded-sm border-none bg-transparent text-danger hover:underline;
+  }
+  &-gray {
+    @apply rounded-sm border-none bg-transparent text-gray hover:underline;
+  }
+}
+
+.btn-icon-text {
+  &-disabled {
+    @apply cursor-not-allowed border-none bg-transparent text-gray-light outline-none focus:outline-none;
+  }
+  &-primary {
+    @apply border-none bg-transparent text-primary hover:text-primary-dark;
+  }
+  &-secondary {
+    @apply border-none bg-transparent text-secondary hover:text-secondary-dark;
+  }
+  &-info {
+    @apply border-none bg-transparent text-info hover:text-info-dark;
+  }
+  &-success {
+    @apply border-none bg-transparent text-success hover:text-success-dark;
+  }
+  &-warning {
+    @apply border-none bg-transparent text-warning hover:text-warning-dark;
+  }
+  &-danger {
+    @apply border-none bg-transparent text-danger hover:text-danger-dark;
+  }
+  &-gray {
+    @apply border-none bg-transparent text-gray hover:text-gray-dark;
+  }
+}
+
+/* ======== GROUPS ======== */
+.btn-group-x {
+  @apply relative z-0 inline-flex;
+  button {
+    @apply hover:z-10;
+    &:not(:first-child, :last-child) {
+      @apply rounded-none;
+    }
+    &:first-child {
+      @apply rounded-l-sm rounded-r-none;
+    }
+    &:last-child {
+      @apply rounded-l-none rounded-r-sm;
+    }
+  }
+}
+
+.btn-group-y {
+  @apply relative z-0 inline-grid;
+  button {
+    @apply hover:z-10;
+    &:not(:first-child, :last-child) {
+      @apply rounded-none;
+    }
+    &:first-child {
+      @apply rounded-b-none rounded-t-sm;
+    }
+    &:last-child {
+      @apply rounded-b-sm rounded-t-none;
+    }
+  }
+}
