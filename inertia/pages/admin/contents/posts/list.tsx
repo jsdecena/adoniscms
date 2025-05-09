@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import HamburgerMenu from '~/ui/components/HamburgerMenu'
 import Sidebar from '~/ui/components/Sidebar'
 
-export default function Page() {
+export default function Post() {
   useEffect(() => {
     document.documentElement.classList.remove('dark')
   }, [])
@@ -20,7 +20,7 @@ export default function Page() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-start justify-start p-8">
         <div className="w-full h-full bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-semibold mb-4 text-gray-800">Page</h1>
+          <h1 className="text-3xl font-semibold mb-4 text-gray-800">List Post</h1>
           <p className="text-gray-600"></p>
         </div>
       </main>

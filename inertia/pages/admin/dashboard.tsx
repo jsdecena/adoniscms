@@ -28,7 +28,7 @@ export default function Dashboard() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-start justify-start p-8">
         <div className="w-full h-full bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-semibold mb-4 text-gray-800">Admin</h1>
+          <h1 className="text-3xl font-semibold mb-4 text-gray-800">Dashboard</h1>
           <p className="text-gray-600"></p>
         </div>
       </main>

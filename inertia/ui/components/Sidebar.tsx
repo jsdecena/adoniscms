@@ -10,7 +10,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ className = '', children }) => (
   <aside className={`w-64 bg-white border-r border-gray-200 flex-col py-8 px-4 shadow-md relative hidden md:flex ${className}`}>
     <div className="mb-8 flex items-center justify-between">
-      <span className="text-2xl font-bold text-gray-800">Admin</span>
+      <span className="text-2xl font-bold text-gray-800">CMS</span>
     </div>
     <nav className="flex-1">
       <ul className="space-y-2">
