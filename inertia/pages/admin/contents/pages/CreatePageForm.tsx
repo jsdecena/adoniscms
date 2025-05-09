@@ -1,17 +1,17 @@
 import Form from '~/lib/create-form';
 import { useToast } from '~/ui/components/ToastProvider';
 import EditPageFormFields from './EditPageFormFields';
-import { Content, ENUM_CONTENT_STATUS, ENUM_CONTENT_TYPE, ENUM_VISIBILITY, TPayload, TPayloadSchema } from './_types';
-import { useUpdatePage } from './_hooks';
+import { ENUM_CONTENT_STATUS, ENUM_CONTENT_TYPE, ENUM_VISIBILITY, TPayload, TPayloadSchema } from './_types';
+import { useCreatePage } from './_hooks';
 
-export function EditPageForm({ page }: { page: Content }) {
-  const { mutate } = useUpdatePage();
+export function CreatePageForm() {
+  const { mutate } = useCreatePage();
   const { showToast } = useToast();
 
   const onSubmit = (v: TPayload): void => {
-    mutate({ id: page.id, payload: v }, {
+    mutate({ payload: v }, {
       onSuccess: () => {
-        showToast('Page updated successfully');
+        showToast('Page created successfully');
       },
       onError: (error: any) => {
         const message = error?.message || 'An error occurred';
@@ -21,12 +21,12 @@ export function EditPageForm({ page }: { page: Content }) {
   };
 
   const FORM_INIT: TPayload = {
-    title: page?.title,
-    body: page?.body ?? '',
-    excerpt: page?.excerpt ?? '',
-    status: (page?.status as ENUM_CONTENT_STATUS) || ENUM_CONTENT_STATUS.DRAFT,
-    visibility: (page?.visibility as ENUM_VISIBILITY) || ENUM_VISIBILITY.PUBLIC,
-    type: (page?.type as ENUM_CONTENT_TYPE) || ENUM_CONTENT_TYPE.PAGE,
+    title: '',
+    body: '',
+    excerpt: '',
+    status: ENUM_CONTENT_STATUS.DRAFT,
+    visibility: ENUM_VISIBILITY.PUBLIC,
+    type: ENUM_CONTENT_TYPE.PAGE,
   };  
 
   return (

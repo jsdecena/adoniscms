@@ -25,7 +25,11 @@ export default function Page() {
   }, []);
 
   const onEdit = (id: string) => {
-    router.visit(`/admin/pages/${id}`)
+    router.visit(`/admin/pages/${id}/edit`)
+  }
+
+  const onCreate = () => {
+    router.visit('/admin/pages/create');
   }
   
   return (
@@ -37,7 +41,10 @@ export default function Page() {
       <main className="flex-1 flex flex-col items-start justify-start p-8">
         <HamburgerMenu />
         <div className="w-full h-full bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-semibold mb-4 text-gray-800">Pages</h1>
+          <div className="flex items-center justify-between mb-4">
+            <h1 className="text-3xl font-semibold text-gray-800">Pages</h1>
+            <Button className='w-25' color='dark' type='button' onClick={onCreate}>Create</Button>
+          </div>
           <p className="text-gray-600"></p>
           <div className="overflow-x-auto">
             <Table>
@@ -59,7 +66,7 @@ export default function Page() {
                     <TableCell className='w-1/2'>{item.body}</TableCell>
                     <TableCell><StatusBadge status={item.status} /></TableCell>
                     <TableCell>
-                      <Button onClick={() => onEdit(item.id)}>Edit</Button>
+                      <Button className='w-25' type='button' color='yellow' onClick={() => onEdit(item.id)}>Edit</Button>
                     </TableCell>
                   </TableRow>
                 ))}

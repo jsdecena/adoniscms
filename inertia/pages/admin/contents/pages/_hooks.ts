@@ -50,7 +50,15 @@ export function useFetchPages() {
 
 const updatePage = async (id: string, payload: TPayload) => {
   const res = await req.putJson({
-    url: `/admin/pages/${id}`,
+    url: `/admin/pages/${id}/edit`,
+    payload,
+  });
+  return res;
+};
+
+const createPage = async (payload: TPayload) => {
+  const res = await req.postJson({
+    url: `/admin/pages/create`,
     payload,
   });
   return res;
@@ -62,6 +70,23 @@ export function useUpdatePage() {
     mutationFn: async ({ id, payload }: { id: string; payload: TPayload }) => {
       try {
         const response = await updatePage(id, payload);
+        return response;
+      } catch (error: any) {
+        throw new Error(error.message || 'An unexpected error occurred');
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['FETCH_PAGES'] });
+    },    
+  });
+}
+
+export function useCreatePage() {
+  return useMutation({
+    mutationKey: ['CREATE_PAGE'],
+    mutationFn: async ({ payload }: { payload: TPayload }) => {
+      try {
+        const response = await createPage(payload);
         return response;
       } catch (error: any) {
         throw new Error(error.message || 'An unexpected error occurred');

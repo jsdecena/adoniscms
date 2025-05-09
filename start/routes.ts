@@ -18,6 +18,8 @@ import PageListsController from '#controllers/contents/page_lists_controller'
 import PageListApiController from '#controllers/contents/api/page_lists_api_controller'
 import PageEditsController from '#controllers/contents/page_edits_controller'
 import PageUpdateApiController from '#controllers/contents/api/page_update_api_controller'
+import PageCreatesController from '#controllers/contents/page_creates_controller'
+import PageStoresApiController from '#controllers/contents/api/page_stores_api_controller'
 
 router.on('/').renderInertia('home')
 
@@ -31,8 +33,11 @@ router.group(() => {
   router.get('pages', [PageListsController]).as('pages.list')
   router.get('api/pages', [PageListApiController]).as('pages.get')
 
-  router.get('pages/:id', [PageEditsController]).as('pages.edit')
-  router.put('pages/:id', [PageUpdateApiController]).as('pages.update')
+  router.get('pages/create', [PageCreatesController]).as('pages.create')
+  router.post('pages/create', [PageStoresApiController]).as('pages.store')
+
+  router.get('pages/:id/edit', [PageEditsController]).as('pages.edit')
+  router.put('pages/:id/edit', [PageUpdateApiController]).as('pages.update')
 
   router.get('posts', [PostListsController]).as('posts.list')
 })
