@@ -8,5 +8,5 @@
       "~/*": ["./*"]
     }
   },
-  "include": ["./**/*.ts", "./**/*.tsx"]
+  "include": ["./**/*.ts", "./**/*.tsx", "../app/validators/login_validator.ts"]
 }

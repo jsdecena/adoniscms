@@ -3,7 +3,6 @@ import { useLogin } from '../_hooks';
 import { useState } from 'react';
 import { PayloadSchema } from '../_types';
 import LoginFormFields from './LoginFormFields';
-import { router } from '@inertiajs/react';
 
 export function LoginForm() {
   const { mutate } = useLogin();
@@ -13,16 +12,17 @@ export function LoginForm() {
     mutate(v, {
       onSuccess: () => {
         setError(undefined);
-        router.visit('/partners/otp?email=' + encodeURIComponent(v.email))
+        // 
       },
       onError: () => {
-        setError('If we found a matching account for your email, we\'ve sent you a One-Time Password (OTP). Please check your inbox.');
+        //
       },
     });
   };
 
   const INIT_FORM = {
     email: '',
+    password: ''
   };
 
   return (

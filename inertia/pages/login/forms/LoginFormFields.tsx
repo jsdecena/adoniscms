@@ -10,6 +10,7 @@ function LoginFormFields() {
   } = useFormHelper(PayloadSchema);
 
   return (
+    <>
     <FormInput
       id="email"
       label="Enter your email"
@@ -18,6 +19,15 @@ function LoginFormFields() {
       error={errors?.email?.message ?? ''}
       type='email'
     />
+    <FormInput
+      id="password"
+      label="Enter your password"
+      register={register('password')}
+      placeholder="*******"
+      error={errors?.password?.message ?? ''}
+      type='password'
+    />        
+    </>
   );
 }
 

@@ -7,7 +7,10 @@
 |
 */
 
+import LoginViewsController from '#controllers/login_views_controller'
 import router from '@adonisjs/core/services/router'
 
 router.on('/').renderInertia('home')
-router.on('login').renderInertia('login/page')
+
+router.get('login', [LoginViewsController]).as('login.view')
+router.get('post', [LoginViewsController]).as('login.store')

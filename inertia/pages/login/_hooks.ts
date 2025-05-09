@@ -11,10 +11,8 @@ interface RegisterResponse {
 
 const action = async (payload: TPayload) => {
   const res: RegisterResponse = await req.post({
-    url: '/partners/login',
-    payload: {
-      email: payload.email
-    },
+    url: '/login',
+    payload,
   });
 
   return res;
