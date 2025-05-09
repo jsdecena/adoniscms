@@ -1,5 +1,6 @@
 import { DarkThemeToggle } from 'flowbite-react'
 import { useEffect } from 'react'
+import { LoginForm } from './forms/LoginForm'
 
 export default function Login() {
   useEffect(() => {
