@@ -1,6 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 
-export default class PageViewsController {
+export default class PageListsController {
   async handle({ inertia }: HttpContext) {
     try {
       return inertia.render('admin/contents/pages/list')

@@ -13,8 +13,8 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 import DashboardViewsController from '#controllers/dashboard_views_controller'
 import LogoutViewsController from '#controllers/logout_views_controller'
-import PageViewsController from '#controllers/page_views_controller'
-import PostViewsController from '#controllers/post_views_controller'
+import PostListsController from '#controllers/post_lists_controller'
+import PageListsController from '#controllers/page_lists_controller'
 
 router.on('/').renderInertia('home')
 
@@ -24,8 +24,8 @@ router.get('logout', [LogoutViewsController]).as('logout.view')
 
 router.group(() => {
   router.get('/', [DashboardViewsController]).as('dashboard.view')
-  router.get('pages', [PageViewsController]).as('page.view')
-  router.get('posts', [PostViewsController]).as('post.view')
+  router.get('pages', [PageListsController]).as('page.list')
+  router.get('posts', [PostListsController]).as('post.list')
 })
 .prefix('admin')
 .middleware(middleware.auth())
