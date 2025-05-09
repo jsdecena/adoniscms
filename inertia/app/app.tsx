@@ -7,6 +7,7 @@ import { initThemeMode } from 'flowbite-react'
 import { createRoot } from 'react-dom/client'
 import '../css/app.css'
 import QueryProvider from '../api'
+import { ToastProvider } from '../ui/components/ToastProvider'
 
 const appName = import.meta.env.VITE_APP_NAME || 'CMS'
 
@@ -21,9 +22,11 @@ createInertiaApp({
 
   setup({ el, App, props }) {
     createRoot(el).render(
-      <QueryProvider>
-        <App {...props} />
-      </QueryProvider>
+      <ToastProvider>
+        <QueryProvider>
+          <App {...props} />
+        </QueryProvider>
+      </ToastProvider>
     )
   },
 })
