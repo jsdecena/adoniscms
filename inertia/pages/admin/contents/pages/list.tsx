@@ -2,15 +2,21 @@ import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 
 import { useEffect, useState } from 'react'
 import HamburgerMenu from '~/ui/components/HamburgerMenu'
 import Sidebar from '~/ui/components/Sidebar'
-import { useFetchPages } from './_hooks';
+import { useFetchPages, useDeletePage } from './_hooks';
 import { Content } from './_types';
 import { Button } from 'flowbite-react';
 import StatusBadge from '~/ui/components/StatusBadge';
 import { router } from '@inertiajs/react';
+import Modal from '~/ui/components/_Modal';
 
 export default function Page() {
   const fetchPages = useFetchPages();
-  const [pages, setPages] = useState<Content[]>([])
+  const deletePage = useDeletePage();
+  const [pages, setPages] = useState<Content[]>([]);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [deleteInput, setDeleteInput] = useState('');
+  const [deleteError, setDeleteError] = useState('');
 
   useEffect(() => {
     const fetch = async () => {
@@ -29,8 +35,32 @@ export default function Page() {
   }
 
   const onDelete = (id: string) => {
-    //
-  }  
+    setDeleteId(id);
+    setDeleteInput('');
+    setDeleteError('');
+    setShowDeleteModal(true);
+  }
+
+  const handleDeleteConfirm = async () => {
+    if (deleteInput !== 'delete') {
+      setDeleteError("You must type 'delete' to confirm.");
+      return;
+    }
+    if (deleteId) {
+      try {
+        await deletePage.mutateAsync({ id: deleteId });
+        // Instantly reload the pages list
+        const res = await fetchPages.mutateAsync();
+        setPages(res);
+        setShowDeleteModal(false);
+        setDeleteId(null);
+        setDeleteInput('');
+        setDeleteError('');
+      } catch (e: any) {
+        setDeleteError(e?.message || 'Delete failed');
+      }
+    }
+  };
 
   const onCreate = () => {
     router.visit('/admin/pages/create');
@@ -79,6 +109,27 @@ export default function Page() {
             </Table>
           </div>
         </div>
+        <Modal isOpen={showDeleteModal} onClose={() => setShowDeleteModal(false)}>
+          <div className="flex flex-col gap-4 p-4">
+            <h2 className="text-xl font-semibold">Confirm Delete</h2>
+            <p>Type <span className="font-bold">delete</span> to confirm deletion of this page.</p>
+            <input
+              type="text"
+              className="border rounded px-2 py-1"
+              value={deleteInput}
+              onChange={e => { setDeleteInput(e.target.value); setDeleteError(''); }}
+              placeholder="Type 'delete' to confirm"
+              autoFocus
+            />
+            {deleteError && <div className="text-red-500 text-sm">{deleteError}</div>}
+            <div className="flex gap-2 justify-end">
+              <Button color="gray" type="button" onClick={() => setShowDeleteModal(false)}>Cancel</Button>
+              <Button color="red" type="button" onClick={handleDeleteConfirm} disabled={deleteInput !== 'delete' || deletePage.isPending}>
+                {deletePage.isPending ? 'Deleting...' : 'Delete'}
+              </Button>
+            </div>
+          </div>
+        </Modal>
       </main>
     </div>
   )
