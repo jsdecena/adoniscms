@@ -1,5 +1,6 @@
 import { useFormHelper } from '~/lib/create-form';
-import { FormInput, FormTextArea, FormSelect } from '~/ui/forms';
+import { FormInput, FormSelect } from '~/ui/forms';
+import FormWysiwyg from '~/ui/forms/FormWysiwyg';
 import { CONTENT_STATUS, ENUM_CONTENT_STATUS, TPayloadSchema } from './_types';
 
 function EditPageFormFields() {
@@ -15,11 +16,11 @@ function EditPageFormFields() {
         placeholder="Page title"
         error={errors?.title?.message ?? ''}
       />
-      <FormTextArea
+      <FormWysiwyg
+        name="body"
         label="Body"
-        register={register('body')}
-        placeholder="Page content"
         error={errors?.body?.message ?? ''}
+        required
       />
       <FormSelect
         label="Status"

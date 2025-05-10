@@ -8,6 +8,7 @@ import { Button } from 'flowbite-react';
 import StatusBadge from '~/ui/components/StatusBadge';
 import { router } from '@inertiajs/react';
 import Modal from '~/ui/components/_Modal';
+import DOMPurify from 'dompurify';
 
 export default function Page() {
   const fetchPages = useFetchPages();
@@ -97,7 +98,11 @@ export default function Page() {
                 {pages.map((item) => (
                   <TableRow key={item.id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
                     <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{item.title}</TableCell>
-                    <TableCell className='w-1/2'>{item.body}</TableCell>
+                    <TableCell className='w-1/2'>
+                      <div
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item.body ?? '') }}
+                      />
+                    </TableCell>
                     <TableCell><StatusBadge status={item.status} /></TableCell>
                     <TableCell className='flex flex-row justify-start gap-2'>
                       <Button className='w-25' type='button' color='yellow' onClick={() => onEdit(item.id)}>Edit</Button>

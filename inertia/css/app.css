@@ -3,3 +3,15 @@
 @source '../../.flowbite-react/class-list.json';
 
 @custom-variant dark (&:where(.dark, .dark *));
+@plugin "flowbite-typography";
+
+.ProseMirror {
+  min-height: 300px;
+  height: 300px;
+}
+
+.ProseMirror:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
