@@ -21,6 +21,12 @@ import PageUpdateApiController from '#controllers/contents/api/page_update_api_c
 import PageCreatesController from '#controllers/contents/page_creates_controller'
 import PageStoresApiController from '#controllers/contents/api/page_stores_api_controller'
 import PageDeletesApiController from '#controllers/contents/api/page_deletes_api_controller'
+import PostCreatesController from '#controllers/contents/post_creates_controller'
+import PostEditsController from '#controllers/contents/post_edits_controller'
+import PostListsApiController from '#controllers/contents/api/post_lists_api_controller'
+import PostStoresApiController from '#controllers/contents/api/post_stores_api_controller'
+import PostUpdateApiController from '#controllers/contents/api/post_update_api_controller'
+import PostDeletesApiController from '#controllers/contents/api/post_deletes_api_controller'
 
 router.on('/').renderInertia('home')
 
@@ -43,6 +49,12 @@ router.group(() => {
   router.delete('pages/:id/delete', [PageDeletesApiController]).as('pages.delete')
 
   router.get('posts', [PostListsController]).as('posts.list')
+  router.get('api/posts', [PostListsApiController]).as('posts.get')
+  router.get('posts/create', [PostCreatesController]).as('posts.create')
+  router.post('posts/create', [PostStoresApiController]).as('posts.store')
+  router.get('posts/:id/edit', [PostEditsController]).as('posts.edit')
+  router.put('posts/:id/edit', [PostUpdateApiController]).as('posts.update')
+  router.delete('posts/:id/delete', [PostDeletesApiController]).as('posts.delete')
 })
 .prefix('admin')
 .middleware(middleware.auth())
