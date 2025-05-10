@@ -21,4 +21,12 @@ cp .env.example && yarn install && yarn dev
 docker compose up
 ```
 
-- Enjoy
+- On another tab again, run:
+
+```shell
+node ace migration:run && node ace db:seed
+```
+
+- Go to [http://localhost:333](http://localhost:333)
+
+- Enjoy and relax, what a wonderful day
