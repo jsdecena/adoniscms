@@ -50,10 +50,13 @@ router.group(() => {
 
   router.get('posts', [PostListsController]).as('posts.list')
   router.get('api/posts', [PostListsApiController]).as('posts.get')
+
   router.get('posts/create', [PostCreatesController]).as('posts.create')
   router.post('posts/create', [PostStoresApiController]).as('posts.store')
+  
   router.get('posts/:id/edit', [PostEditsController]).as('posts.edit')
   router.put('posts/:id/edit', [PostUpdateApiController]).as('posts.update')
+  
   router.delete('posts/:id/delete', [PostDeletesApiController]).as('posts.delete')
 })
 .prefix('admin')
