@@ -1,6 +1,7 @@
 # AdonisJS x React x Vite X Flowbite
 
-Nodejs backend and React Typescript frontend + SSR
+Nodejs backend and React Typescript frontend + SSR. 
+Open source NodeJS and React SSR CMS - Content Management System
 
 ## Required
 
