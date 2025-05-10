@@ -20,12 +20,12 @@ const Sidebar: React.FC<SidebarProps> = ({ className = '', children }) => (
           </a>
         </li>        
         <li>
-          <a href="/admin/pages/list" className="gap-2 flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">
+          <a href="/admin/pages" className="gap-2 flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">
             <FontAwesomeIcon icon={faFile} /> Pages
           </a>
         </li>
         <li>
-          <a href="/admin/posts/list" className="gap-2 flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">
+          <a href="/admin/posts" className="gap-2 flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">
           <FontAwesomeIcon icon={faFileAlt} /> Posts
           </a>
         </li>
